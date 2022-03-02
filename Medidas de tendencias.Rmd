@@ -1,0 +1,104 @@
+---
+title: "Medias de tendencia central"
+author: "Estrada Quezada Jocelyn Anahi"
+name: https://AnahiEstrada.github.io
+date: "2/3/2022"
+output: html_document
+---
+
+### 1. ¿Qué son las medidas de tendencia central?  {style="text-align: justify;"}
+
+Son parametros estadisticos que informan sobre el centro de la distribucion de la muestra o poblacion estadistica.
+
+#### Fuente: [medidas de tendencia](https://economipedia.com/definiciones/medidas-de-tendencia-central.html "medidas de tendencia")
+
+Para este ejemplo, primero generaremos una serie de \*\*100\*\* números aleatorios entre \*\*1\*\* y \*\*20\*\* mediante la función \`sample\`. El argumento \`TRUE\` nos permitirá generar una muestra con remplazo:
+
+```{r}
+numeros <- sample(1:20, 100, TRUE)
+numeros
+```
+
+#### **2.- MEDIANA**
+
+Es un [**estadístico**](https://economipedia.com/definiciones/estadistico.html) de posición central que parte la distribución en dos, es decir, deja la misma cantidad de valores a un lado que a otro. Las fórmulas propuestas no nos darán el valor de la mediana, lo que nos darán será la posición en la que está dentro del conjunto de datos.
+
+**Fuente: [Mediana](https://economipedia.com/definiciones/medidas-de-tendencia-central.html "Mediana")**
+Para obtener la **mediana**, podemos ordenar los numeros de menor a mayor, **el número que esté en medio de la muestra será la mediana.** Si utilizamos R, se puede hacer el cálculo de la mediana con la función median:
+
+```{r}
+mediana <- median(numeros)
+mediana
+
+```
+
+#### 3. MEDIA.
+
+Es el valor promedio de un conjunto de datos numericos, calculada como una suma del conjunto de valores dividida entre el numero total de valores.
+
+#### Fuente: [Media](https://economipedia.com/definiciones/medidas-de-tendencia-central.html "Media")
+
+![Formula Media Aritmetica](https://economipedia.com/wp-content/uploads/Formula-media-aritmetica-1.jpg)
+
+
+Si usamos R, podemos obtener la media de una muestra si utlilizamos la función **mean**:
+
+```{r}
+media <- mean(numeros)
+media
+
+```
+
+**4.- MODA**
+Es el valor que más se repite en una muestra estadística o población. No tiene fórmula en sí mismo. Lo que habría que realizar es la suma de las repeticiones de cada valor.
+**Fuente:[Moda](https://economipedia.com/definiciones/medidas-de-tendencia-central.html "Moda")**
+
+Podemos saber cuál es la **frecuencia** (número de veces que aparece un elemento en una muestra) de cada número si dibujamos un \*\*histograma\*\* con la función hist, **aquel elemento con mayor frecuencia será la moda:**
+
+```{r}
+# El argumento breaks nos permite dividir en histograma en las partes que queramos
+hist(numeros, breaks = 20)
+
+```
+
+Para obtener un resultado con más precisión, podemos obtener la **moda** si generamos una **tabla de frecuencias** con la función *table* y la función \`*data.frame*\`, **aquel elemento con mayor frecuencia será la moda:**
+
+```{r}
+tabla.frecuencias <- data.frame(table(numeros))
+tabla.frecuencias
+
+```
+
+**5.- EJERCICIOS**
+
+Aplica lo que aprendiste, obten la **mediana, media y moda** de la siguiente muestra de números:
+
+```{r}
+# Con la función seq, creamos una secuencia de 1 a 10 en intervalos de 0.1 en 0.1
+secuencia <- seq(1, 10, 0.1)
+muestra <- sample(secuencia, 100, TRUE)
+muestra
+
+```
+
+-   MEDIANA
+
+    ```{r}
+    mediana.muestra <- median(muestra)
+    mediana.muestra
+
+    ```
+
+-   **MEDIA**
+
+```{r}
+media.muestra <- mean(muestra)
+media.muestra
+```
+
+-   **MODA**
+
+```{r}
+tabla.muestra <- data.frame(table(muestra))
+tabla.muestra
+```
